@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 var router = express.Router();
+require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,10 +10,10 @@ router.get('/', function(req, res, next) {
 
 // mysql connection
 const config = {
-  host: 'localhost',
-  user: 'root',
-  password: 'holdpls',
-  database: 'inzodex'
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database
 };
 
 // create the pool for mysql db
