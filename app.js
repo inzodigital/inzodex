@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // mysql connection
 const config = {
 	host: process.env.host,
-  	user: process.env.user,
-  	password: process.env.password,
-  	database: process.env.database
+	user: process.env.user,
+	password: process.env.password,
+	database: process.env.database
 };
 
 // create the pool for mysql db
@@ -43,7 +43,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // endpoint 00: randomly select a pokemon to show on home page
 app.get('/', function(req, res) {
-  
+
 	// generate random number
 	var num = Math.floor(Math.random() * 9) + 1;
 
@@ -58,7 +58,7 @@ app.get('/', function(req, res) {
 
 		// send query results to client
 		res.render('index', {title: 'inzodex', nameResult: pokemon});
-  	});
+	});
 });
 
 // catch 404 and forward to error handler
