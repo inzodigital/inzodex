@@ -48,18 +48,18 @@ app.get('/', function(req, res) {
 	var num = Math.floor(Math.random() * 9) + 1;
 
 	pool.query('SELECT name FROM inzodex WHERE id = ' + num, function(error, rows) {
-    	if (error) throw error
+		if (error) throw error
 
-    	// debug
-    	console.log(num);
+		// debug
+		console.log(num);
 
-    	// grab pokemon name to pass to view
-    	var pokemon = rows[0].name;
+		// grab pokemon name to pass to view
+		var pokemon = rows[0].name;
 
-    	// send query results to client
-    	res.render('index', {title: 'inzodex', nameResult: pokemon});
-  	})
-})
+		// send query results to client
+		res.render('index', {title: 'inzodex', nameResult: pokemon});
+  	});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,12 +69,12 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
 	// set locals, only providing error in development
-  	res.locals.message = err.message;
-  	res.locals.error = req.app.get('env') === 'development' ? err : {};
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  	// render the error page
-  	res.status(err.status || 500);
-  	res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 // exports
