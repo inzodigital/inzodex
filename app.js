@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 	// generate random number
 	var num = Math.floor(Math.random() * 9) + 1;
 
-	pool.query('SELECT name FROM inzodex WHERE id = ' + num, function(error, rows, fields) {
+	pool.query('SELECT name FROM inzodex WHERE id = ' + num, function(error, rows) {
     	if (error) throw error
 
     	// debug
