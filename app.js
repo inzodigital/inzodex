@@ -29,7 +29,10 @@ app.get('/', (req, res) => {
 	});
 });
 
+// account for environment port differences
+const PORT = process.env.PORT || 3000;
+
 // set port, listen for requests
-app.listen(3000, () => {
-	console.log('Server is running on port 3000.');
+app.listen(PORT, () => {
+	console.log('Server is running on port ' + PORT + '.');
 });
