@@ -1,12 +1,17 @@
-const express = require("express");
+const express = require('express');
+const favicon = require('serve-favicon');
+const path = require('path');
 const sql = require("./db.js");
 
+// app and engine setup
 const app = express();
-
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public/images/', 'favicon.ico')));
 
 // simple route
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
 	// generate random integer
 	var num = Math.floor(Math.random() * 9) + 1;
 
@@ -26,5 +31,5 @@ app.get("/", (req, res) => {
 
 // set port, listen for requests
 app.listen(3000, () => {
-	console.log("Server is running on port 3000.");
+	console.log('Server is running on port 3000.');
 });
